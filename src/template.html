@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="#" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="sidebar">
+        <nav>
+          <button type="button" class="show-add-task-dialog">Add Task</button>
+          <ul>
+            <li id="all-tasks">
+              <img
+                src="./assets/icons/all_tasks.svg"
+                height="28px"
+                width="28px"
+              />All Tasks
+            </li>
+            <li id="upcoming">
+              <img
+                src="./assets/icons/upcoming.svg"
+                height="28px"
+                width="28px"
+              />Upcoming
+            </li>
+            <li id="completed">
+              <img
+                src="./assets/icons/completed.svg"
+                height="28px"
+                width="28px"
+              />Completed
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="content">
+        <dialog class="add-task-dialog">
+          <div>
+            <button id="close-dialog">Close</button>
+            <div class="dialog-content">
+              <label for="title">Task: </label>
+              <input type="text" id="title" name="title" required />
+              <label for="priority">Priority:</label>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="slider"
+                id="priority"
+                name="priority"
+                required
+              />
+              <label for="due-date">Due Date:</label>
+              <input type="date" id="due-date" name="due_date" required />
+            </div>
+            <button type="button" id="add-task">Add Task</button>
+          </div>
+        </dialog>
+        <h2></h2>
+        <div class="task-container"></div>
+      </div>
+    </div>
+  </body>
+</html>
