@@ -45,7 +45,7 @@ class TaskDialog {
           this.inputs.project,
         );
 
-        taskList.addNewTask(task);
+        taskList.addNewTask(task, this.inputs.project);
         saveState(taskList);
         populateTasks(taskList.targetProjectList);
         return this.dialog.close();

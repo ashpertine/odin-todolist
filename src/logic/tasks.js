@@ -22,9 +22,9 @@ class TaskList {
     this.targetProjectList = []; //Dynamic List controlled by Nav
   }
 
-  addNewTask(task_obj) {
+  addNewTask(task_obj, project) {
     this.listArr.push(task_obj);
-    const currentProject = this.targetProjectList[0].project;
+    const currentProject = project;
     if (task_obj.project === currentProject) {
       this.targetProjectList.push(task_obj);
     }
