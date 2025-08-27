@@ -10,8 +10,8 @@
     <div id="main-container">
       <div id="sidebar">
         <nav>
-          <button type="button" class="show-add-task-dialog">Add Task</button>
-          <ul>
+          <button type="button" id="show-add-task-dialog">Add Task</button>
+          <ul id="filters">
             <li id="all-tasks">
               <img
                 src="./assets/icons/all_tasks.svg"
@@ -34,12 +34,22 @@
               />Completed
             </li>
           </ul>
+          <hr />
+          <div class="projects-container">
+            <div>
+              <span id="projects-title">Projects</span>
+              <button type="button" id="show-add-project-dialog">
+                <img src="assets/icons/add.svg" width="20" height="20" />
+              </button>
+            </div>
+            <ul class="projects"></ul>
+          </div>
         </nav>
       </div>
       <div class="content">
-        <dialog class="add-task-dialog">
+        <dialog id="add-task-dialog">
           <div>
-            <button id="close-dialog">Close</button>
+            <button class="close-dialog">Close</button>
             <div class="dialog-content">
               <label for="title">Task: </label>
               <input type="text" id="title" name="title" required />
@@ -56,11 +66,29 @@
               />
               <label for="due-date">Due Date:</label>
               <input type="date" id="due-date" name="due_date" required />
+              <label for="project-opt">Project: </label>
+              <select name="project-opt" id="project-opt"></select>
             </div>
             <button type="button" id="add-task">Add Task</button>
           </div>
         </dialog>
-        <h2></h2>
+        <dialog id="add-project-dialog">
+          <div>
+            <button class="close-dialog">Close</button>
+            <div class="dialog-content">
+              <label for="project-title">Project Title:</label>
+              <input
+                type="text"
+                id="project-title"
+                name="project-title"
+                required
+              />
+              <button type="button" id="add-project">Add Project</button>
+            </div>
+          </div>
+        </dialog>
+        <h2 id="filter"></h2>
+        <h3 id="current-project"></h3>
         <div class="task-container"></div>
       </div>
     </div>

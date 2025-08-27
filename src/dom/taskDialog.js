@@ -12,9 +12,10 @@ class TaskDialog {
       titleInput: this.dialog.querySelector("#title"),
       priorityInput: this.dialog.querySelector("#priority"),
       dueDateInput: this.dialog.querySelector("#due-date"),
+      projectInput: this.dialog.querySelector("#project-opt"),
     };
 
-    this.closeButton = this.dialog.querySelector("#close-dialog");
+    this.closeButton = this.dialog.querySelector(".close-dialog");
     this.addTaskButton = this.dialog.querySelector("#add-task");
   }
 
@@ -41,11 +42,12 @@ class TaskDialog {
           this.inputs.title,
           this.inputs.priority,
           this.inputs.due_date,
+          this.inputs.project,
         );
 
         taskList.addNewTask(task);
         saveState(taskList);
-        populateTasks(taskList.list);
+        populateTasks(taskList.targetProjectList);
         return this.dialog.close();
       }
     });
@@ -63,6 +65,7 @@ class TaskDialog {
 
   show() {
     this.resetInputs();
+    this.addProjectOptions();
     this.dialog.showModal();
   }
 
@@ -71,11 +74,28 @@ class TaskDialog {
     this.dialog.close();
   }
 
+  addProjectOptions() {
+    while (this.inputObj.projectInput.firstChild) {
+      this.inputObj.projectInput.removeChild(
+        this.inputObj.projectInput.lastChild,
+      );
+    }
+
+    const projectArr = taskList.projectArr.slice(1);
+    projectArr.forEach((string) => {
+      const option = document.createElement("option");
+      option.value = string;
+      option.innerText = string;
+      this.inputObj.projectInput.append(option);
+    });
+  }
+
   get inputs() {
     let infoObj = {
       title: this.inputObj.titleInput.value,
       priority: this.inputObj.priorityInput.value,
       due_date: this.inputObj.dueDateInput.value,
+      project: this.inputObj.projectInput.value,
     };
     return infoObj;
   }
